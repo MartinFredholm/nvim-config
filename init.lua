@@ -1,13 +1,13 @@
--- Basics 
+-- Basics
 require('config.autocmds')
 require('config.globals')
 require('config.options')
 require('config.keymaps')
 require('config.colorschemes')
 
--- LSP 
+-- LSP
 require('config.lsp')
 
--- Plugins 
+-- Plugins
 require('plugins.file-explorer')
 require('plugins.treesitter')
