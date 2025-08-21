@@ -1,0 +1,33 @@
+-- -- Keymaps
+-- Basics
+vim.keymap.set("i", "jj", "<Esc>")
+vim.keymap.set("n", "<leader>q", ":q<CR>")
+vim.keymap.set("n", "<leader>lf", vim.lsp.buf.format)
+
+-- Saving File
+vim.keymap.set("n", "<C-s>", ":update<CR>")
+vim.keymap.set("i", "<C-s>", "<Esc>:update<CR>a")
+vim.keymap.set("v", "<C-s>", "<Esc>:update<CR>")
+
+-- Buffer navigation
+vim.keymap.set("n", "<leader>bn", ":bnext<CR>")
+vim.keymap.set("n", "<leader>bp", ":bprevious<CR>")
+
+-- Splitting and Rezising windows
+vim.keymap.set("n", "<leader>sv", ":vsplit<CR>")
+vim.keymap.set("n", "<leader>sh", ":split<CR>")
+vim.keymap.set("n", "<C-Up>", ":resize +2<CR>")
+vim.keymap.set("n", "<C-Down>", ":resize -2<CR>")
+vim.keymap.set("n", "<C-Left>", ":vertical resize -2<CR>")
+vim.keymap.set("n", "<C-Right>", ":vertical resize +2<CR>")
+
+-- Terminal
+vim.keymap.set("n", "<leader>ft", ":split term://pwsh<CR>i")
+vim.keymap.set("t", "<Esc>", [[<C-\><C-n>]], { noremap = true })
+
+
+-- Window navigation
+vim.keymap.set("n", "<C-l>", "<C-w>l")
+vim.keymap.set("n", "<C-h>", "<C-w>h")
+vim.keymap.set("n", "<C-j>", "<C-w>j")
+vim.keymap.set("n", "<C-k>", "<C-w>k")
