@@ -11,3 +11,7 @@ require('config.lsp')
 -- Plugins
 require('plugins.file-explorer')
 require('plugins.treesitter')
+require('plugins.autocomplete')
+require('plugins.fzf')
+require('plugins.startscreen')
+
