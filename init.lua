@@ -14,4 +14,4 @@ require('plugins.treesitter')
 require('plugins.autocomplete')
 require('plugins.fzf')
 require('plugins.startscreen')
-
+require('plugins.none-ls')
