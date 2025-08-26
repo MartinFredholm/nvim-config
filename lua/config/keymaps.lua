@@ -22,9 +22,13 @@ vim.keymap.set("n", "<C-Left>", ":vertical resize -2<CR>")
 vim.keymap.set("n", "<C-Right>", ":vertical resize +2<CR>")
 
 -- Terminal
-vim.keymap.set("n", "<leader>ft", ":split term://pwsh<CR>i")
+if vim.loop.os_uname().sysname == Windows_NL then
+    vim.keymap.set("n", "<leader>ft", ":split term://pwsh<CR>i")
+else
+    vim.keymap.set("n", "<leader>ft", ":split | term<CR>i")
+end 
+    
 vim.keymap.set("t", "<Esc>", [[<C-\><C-n>]], { noremap = true })
-
 
 -- Window navigation
 vim.keymap.set("n", "<C-l>", "<C-w>l")
