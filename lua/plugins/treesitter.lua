@@ -1,21 +1,8 @@
 vim.pack.add({
     { src = 'https://github.com/nvim-treesitter/nvim-treesitter', version = 'master' },
-    { src = "https://github.com/OXY2DEV/markview.nvim" },
 })
 
 
-require("markview").setup({
-    preview = {
-        enable        = true,
-        icon_provider = 'mini',
-        modes         = { "c", "n", "no", "i", "v" },
-        hybrid_modes  = { "i", "v" },
-    },
-
-    markdown_inline = {
-        enable = true,
-    },
-})
 require('nvim-treesitter.configs').setup({
     ensure_installed = { "c", "lua", "python", "html", "yaml", "vim", "vimdoc", "query", "markdown", "markdown_inline" },
 

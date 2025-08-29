@@ -3,7 +3,7 @@ vim.pack.add({
 })
 
 if vim.loop.os_uname().sysname == "Windows_NT" then
-    vim.g.vimtex_view_general_viewer = "SumatraPDF -reuse-instance"
+    vim.g.vimtex_view_general_viewer = "SumatraPDF"
 end
 vim.cmd("filetype plugin indent on")
 vim.cmd("syntax enable")
