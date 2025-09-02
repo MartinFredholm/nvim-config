@@ -27,9 +27,6 @@ require('obsidian').setup({
 
     templates = {
         folder = "Templates",
-        ["default"] = {
-            template = "default.md"
-        }
     },
     note_id_func = function(title)
         -- Always generate a generic ID with YYMMDD-HHMM + 4 random uppercase letters
