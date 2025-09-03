@@ -1,9 +1,7 @@
-# Header one 
-
-
-This is some text with math inline $x+y = \frac{1}{2}$
-$$
-x = \frac{5}{2}
-$$ 
-
-
+Hello from dynamic node:
+\begin{bmatrix}
+1 & 2 & 3 & 4\\
+1 & 2 & 3 & 4\\
+1 & 2 & 3 & 4\\
+1 & 2 & 3 & 4
+\end{bmatrix}

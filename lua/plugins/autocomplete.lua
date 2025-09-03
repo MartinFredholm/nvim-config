@@ -1,11 +1,8 @@
 vim.pack.add({
     { src = 'https://github.com/saghen/blink.cmp',            version = 'v1.6.0' },
-    { src = 'https://github.com/rafamadriz/friendly-snippets' },
-    { src = 'https://github.com/L3MON4D3/LuaSnip' },
     { src = 'https://github.com/saghen/blink.compat',         version = 'v2.5.0' },
 })
 
-require("luasnip.loaders.from_vscode").lazy_load()
 require("blink.cmp").setup({
     keymap = { preset = 'default' },
     appearance = {
@@ -37,9 +34,4 @@ require("blink.cmp").setup({
         end,
     },
     fuzzy = { implementation = "lua" },
-    -- Disable blink.cmp for Obsidian Markdown files
-   -- enabled = function()
-   --     local in_obsidian_vault = vim.fn.expand('%:p'):match('^' .. vim.fn.expand('~/Documents/Obsidian/Abyss'))
-   --     return vim.bo.filetype ~= 'markdown' or not in_obsidian_vault
-   -- end,
 })
