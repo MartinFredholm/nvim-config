@@ -26,8 +26,8 @@ if vim.loop.os_uname().sysname == "Windows_NT" then
     vim.keymap.set("n", "<leader>ft", ":split term://pwsh<CR>i")
 else
     vim.keymap.set("n", "<leader>ft", ":split | term<CR>i")
-end 
-    
+end
+
 vim.keymap.set("t", "<Esc>", [[<C-\><C-n>]], { noremap = true })
 
 -- Window navigation
@@ -35,3 +35,7 @@ vim.keymap.set("n", "<C-l>", "<C-w>l")
 vim.keymap.set("n", "<C-h>", "<C-w>h")
 vim.keymap.set("n", "<C-j>", "<C-w>j")
 vim.keymap.set("n", "<C-k>", "<C-w>k")
+
+-- Spelling correction
+vim.keymap.set("i", "<C-l>", "<Esc>[s1z=`]a")
+vim.keymap.set("n", "<C-l>", "[s1z=`]a")

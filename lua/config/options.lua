@@ -25,7 +25,24 @@ vim.o.termguicolors = true
 vim.o.signcolumn = "yes"
 vim.o.showmatch = true
 vim.o.winborder = "rounded"
+vim.opt.winblend = 0
+vim.opt.pumblend = 0
 
+vim.api.nvim_create_autocmd("InsertLeave", {
+    callback = function()
+        vim.schedule(function()
+            vim.cmd("redraw!")
+        end)
+    end,
+})
+-- Force proper rendering
+vim.api.nvim_create_autocmd("CompleteDone", {
+    callback = function()
+        vim.schedule(function()
+            vim.cmd('redraw!')
+        end)
+    end,
+})
 -- File Handling
 vim.o.backup = false
 vim.o.writebackup = false
@@ -42,3 +59,15 @@ vim.opt.path = vim.opt.path + { ".", "**" }
 vim.o.splitbelow = true
 vim.o.splitright = true
 vim.o.conceallevel = 2
+
+-- Behaviour
+vim.o.spelllang = 'en_us'
+vim.opt.showbreak = "↪ "
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = "markdown",
+    callback = function()
+        vim.opt_local.wrap = true
+        vim.opt_local.linebreak = true
+        vim.opt_local.spell = true
+    end,
+})

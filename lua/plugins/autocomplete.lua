@@ -1,6 +1,6 @@
 vim.pack.add({
-    { src = 'https://github.com/saghen/blink.cmp',            version = 'v1.6.0' },
-    { src = 'https://github.com/saghen/blink.compat',         version = 'v2.5.0' },
+    { src = 'https://github.com/saghen/blink.cmp',    version = 'v1.6.0' },
+    { src = 'https://github.com/saghen/blink.compat', version = 'v2.5.0' },
 })
 
 require("blink.cmp").setup({
@@ -8,7 +8,19 @@ require("blink.cmp").setup({
     appearance = {
         nerd_font_variant = 'mono'
     },
-    completion = { documentation = { auto_show = false } },
+
+    completion = {
+        accept = {
+            auto_brackets = {
+                enabled = true }
+        },
+        -- Dont show documentation when selecting a completion item
+        documentation = { auto_show = false },
+
+        -- Dont display a preview of the selected item on the current line
+        ghost_text = { enabled = false },
+    },
+
     sources = {
         default = { 'lsp', 'path', 'snippets', 'buffer' },
         providers = {
