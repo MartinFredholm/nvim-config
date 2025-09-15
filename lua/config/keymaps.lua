@@ -37,5 +37,5 @@ vim.keymap.set("n", "<C-j>", "<C-w>j")
 vim.keymap.set("n", "<C-k>", "<C-w>k")
 
 -- Spelling correction
-vim.keymap.set("i", "<C-l>", "<Esc>[s1z=`]a")
-vim.keymap.set("n", "<C-l>", "[s1z=`]a")
+vim.keymap.set("i", "<C-l>", "<c-g>u<Esc>[s1z=`]a<c-g>u")
+vim.keymap.set("n", "<C-l>", "[s1z=`]")

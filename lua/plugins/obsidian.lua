@@ -1,8 +1,6 @@
 vim.pack.add({
     { src = "https://github.com/obsidian-nvim/obsidian.nvim", version = "v3.13.1" },
-    { src = "https://github.com/nvim-lua/plenary.nvim" },
 })
-require('plenary')
 require('obsidian').setup({
     legacy_commands = false,
     disable_frontmatter = false,
@@ -65,18 +63,25 @@ require('obsidian').setup({
             note:add_alias(note.title)
         end
         if not note.tags or vim.tbl_isempty(note.tags) then
-            print("inside")
             note:add_tag('raw')
         end
+        print(vim.inspect(note.aliases))
         local function deduplicate(arr)
             local seen = {}
             local result = {}
             for _, item in ipairs(arr) do
-                if not seen[item] then
-                    seen[item] = true
-                    table.insert(result, item)
+                --print("Before split:" .. vim.inspect(item))
+                for split_item in vim.gsplit(item, ',') do
+                    local trimmed = vim.trim(split_item)
+                    --print("Split Item:" .. vim.inspect(split_item))
+                    if not seen[trimmed] then
+                        --print("Not seen before")
+                        seen[trimmed] = true
+                        table.insert(result, trimmed)
+                    end
                 end
             end
+            --print(vim.inspect(result))
             return result
         end
         note.aliases = deduplicate(note.aliases)
@@ -84,8 +89,8 @@ require('obsidian').setup({
         local out = {
             id = note.id,
             title = note.title,
-            aliases = vim.fn.join(note.aliases, ", "),
-            tags = vim.fn.join(note.tags, ", ")
+            aliases = note.aliases,
+            tags = vim.fn.join(note.tags, " ")
         }
         if note.metadata and not vim.tbl_isempty(note.metadata) then
             for k, v in pairs(note.metadata) do

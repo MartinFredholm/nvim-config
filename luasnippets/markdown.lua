@@ -110,6 +110,20 @@ return {
     ),
     s(
         {
+            trig = "bold",
+            name = "Math bold",
+            priority = 100,
+            snippetType = "autosnippet",
+            condition = in_math
+        },
+        fmta("\\mathbf{<>}",
+            {
+                i(1)
+            }
+        )
+    ),
+    s(
+        {
             trig = "frac",
             name = "Fraction",
             priority = 100,
