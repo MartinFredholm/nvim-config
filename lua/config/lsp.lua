@@ -1,7 +1,8 @@
 -- LSP setup
 vim.lsp.enable({
     'lua_ls',
-    'pyright'
+    'pyright',
+    'yamlls',
 })
 
 -- Diagnostics
