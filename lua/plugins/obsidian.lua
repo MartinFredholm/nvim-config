@@ -3,7 +3,6 @@ vim.pack.add({
 })
 require('obsidian').setup({
     legacy_commands = false,
-    disable_frontmatter = false,
     new_notes_location = "notes_subdir",
     workspaces = {
         {
@@ -17,12 +16,15 @@ require('obsidian').setup({
     completion = {
         nvim_cmp = false,
         blink = true,
-        min_chars = 0,
+        min_chars = 2,
     },
     picker = {
         name = 'fzf-lua',
     },
 
+    attachments = {
+        img_folder = "/Figures",
+    },
     templates = {
         folder = "Templates",
     },
@@ -65,7 +67,7 @@ require('obsidian').setup({
         if not note.tags or vim.tbl_isempty(note.tags) then
             note:add_tag('raw')
         end
-        print(vim.inspect(note.aliases))
+        --print(vim.inspect(note.aliases))
         local function deduplicate(arr)
             local seen = {}
             local result = {}

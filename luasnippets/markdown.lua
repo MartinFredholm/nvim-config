@@ -22,9 +22,11 @@ local function in_math()
             local parent_type = parent and parent:type() or ""
             print("Parent type: " .. parent_type)
             print("Node type: " .. node_type)
-            local condition1 = parent_type == "latex_block"
-            local condition2 = node_type == "latex_block"
-            local condition3 = false
+            local condition1 = node_type == "latex_block" or parent_type == "latex_block"
+            local condition2 = node_type == "inline_formula" or parent_type == "inline_formula"
+            local condition3 = node_type == "displayed_equation" or parent_type == "displayed_equation"
+            local condition4 = node_type == "curly_group"
+            local condition5 = parent_type == "generic_command" or parent_type == "generic_environment"
             if node_type == "inline" then
                 -- Count inline math on current line
                 -- Method 2: Fallback to line-based detection
@@ -42,7 +44,9 @@ local function in_math()
                     print("Inline math detected")
                 end
             end
-            return condition1 or condition2 or condition3
+            local result = condition1 or condition2 or condition3 or condition4 or condition5
+            print("In math: "..tostring(result))
+            return result
         end
     end
     return false
@@ -140,7 +144,7 @@ return {
         {
             trig = "(%d+)-(%d+)mat",
             name = "Matrix",
-            priority = 500,
+            priority = 100,
             regTrig = false,
             snippetType = "autosnippet",
             condition = in_math
@@ -189,6 +193,16 @@ return {
             condition = in_math
         },
         t("\\rho")
+    ),
+    s(
+        {
+            trig = "tau",
+            name = "tau",
+            priority = 100,
+            snippetType = "autosnippet",
+            condition = in_math
+        },
+        t("\\tau")
     ),
     s(
         {
@@ -323,6 +337,21 @@ return {
         },
         fmta("\\sqrt{<>}", i(1))
     ),
+
+    -- common notation
+
+    s(
+        {
+            trig = " %*",
+            regTrig = false,
+            wordTrig = false,
+            name = "cdot",
+            priority = 100,
+            snippetType = "autosnippet",
+            condition = in_math
+        },
+        t("\\cdot ")
+    ),
     s(
         {
             trig = "dot",
@@ -343,8 +372,61 @@ return {
         },
         t("\\ddot ")
     ),
+    s(
+        {
+            trig = "diff",
+            name = "diff",
+            priority = 100,
+            snippetType = "autosnippet",
+            condition = in_math
+        },
+        fmta("\\frac{d <>}{d <>}", { i(1), i(2) })
+    ),
+    s(
+        {
+            trig = "partial",
+            name = "partial",
+            priority = 100,
+            snippetType = "autosnippet",
+            condition = in_math
+        },
+        fmta("\\frac{\\partial <>}{\\partial <>}", { i(1), i(2) })
+    ),
 
-    -- Subscript
+    -- common formatting
+
+    s(
+        {
+            trig = "quad",
+            name = "quad",
+            priority = 100,
+            snippetType = "autosnippet",
+            condition = in_math
+        },
+        t("\\quad")
+    ),
+    s(
+        {
+            trig = "qquad",
+            name = "qquad",
+            priority = 100,
+            snippetType = "autosnippet",
+            condition = in_math
+        },
+        t("\\qquad")
+    ),
+    s(
+        {
+            trig = "real",
+            name = "Real",
+            priority = 100,
+            snippetType = "autosnippet",
+            condition = in_math
+        },
+        t("\\mathbb{R}")
+    ),
+
+    --- Sub- and superscript
 
     s({
             trig = "([a-zA-Z])(%d)",
@@ -385,6 +467,17 @@ return {
             condition = in_math
         },
         fmta("_{<>}", i(1))
+    ),
+    s({
+            trig = "%^",
+            regTrig = true,
+            wordTrig = false,
+            name = "superscript_bracket",
+            priority = 100,
+            snippetType = "autosnippet",
+            condition = in_math
+        },
+        fmta("^{<>}", i(1))
     ),
     s({
             trig = "%(",

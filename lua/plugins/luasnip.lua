@@ -1,5 +1,5 @@
 vim.pack.add({
-    { src = 'https://github.com/L3MON4D3/LuaSnip',                      name = 'luasnip' },
+    { src = 'https://github.com/L3MON4D3/LuaSnip', name = 'luasnip', run = "make install_jsregexp" },
     { src = 'https://github.com/iurimateus/luasnip-latex-snippets.nvim' },
 })
 local ls = require('luasnip')
