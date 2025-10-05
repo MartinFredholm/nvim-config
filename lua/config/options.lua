@@ -27,22 +27,8 @@ vim.o.showmatch = true
 vim.o.winborder = "rounded"
 vim.opt.winblend = 0
 vim.opt.pumblend = 0
+vim.o.pumheight = 7
 
-vim.api.nvim_create_autocmd("InsertLeave", {
-    callback = function()
-        vim.schedule(function()
-            vim.cmd("redraw!")
-        end)
-    end,
-})
--- Force proper rendering
-vim.api.nvim_create_autocmd("CompleteDone", {
-    callback = function()
-        vim.schedule(function()
-            vim.cmd('redraw!')
-        end)
-    end,
-})
 -- File Handling
 vim.o.backup = false
 vim.o.writebackup = false
