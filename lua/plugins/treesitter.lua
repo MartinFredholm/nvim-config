@@ -1,5 +1,6 @@
 vim.pack.add({
     { src = 'https://github.com/nvim-treesitter/nvim-treesitter', version = 'master' },
+    { src = 'https://github.com/nvim-treesitter/nvim-treesitter-textobjects' },
 })
 
 
@@ -24,5 +25,17 @@ require('nvim-treesitter.configs').setup({
         end,
 
         additional_vim_regex_highlighting = false,
+    },
+    textobjects = {
+        select = {
+            enable = true,
+            lookahead = true,
+            keymaps = {
+                ["af"] = "@function.outer",
+                ["if"] = "@function.inner",
+                ["ac"] = "@class.outer", -- around class
+                ["ic"] = "@class.inner", -- inside class
+            },
+        },
     },
 })
