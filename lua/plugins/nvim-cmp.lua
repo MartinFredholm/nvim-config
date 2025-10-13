@@ -61,6 +61,6 @@ cmp.setup({
     },
 
     experimental = {
-        ghost_text = true, -- inline suggestions
+        ghost_text = false, -- inline suggestions
     },
 })
