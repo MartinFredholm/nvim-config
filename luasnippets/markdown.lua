@@ -27,6 +27,9 @@ local function in_math()
             local condition3 = node_type == "displayed_equation" or parent_type == "displayed_equation"
             local condition4 = node_type == "curly_group"
             local condition5 = parent_type == "generic_command" or parent_type == "generic_environment"
+            local condition6 = parent_type == "subscript" or parent_type == "superscript" 
+            local condition7 = node_type == "subscript" or node_type == "superscript" 
+            local condition_inline = false
             if node_type == "inline" then
                 -- Count inline math on current line
                 -- Method 2: Fallback to line-based detection
@@ -39,13 +42,14 @@ local function in_math()
                 local count = 0
                 for _ in before:gmatch("%$") do count = count + 1 end
 
-                condition3 = count % 2 == 1
-                if condition3 then
+                condition_inline = count % 2 == 1
+                if condition_inline then
                     print("Inline math detected")
                 end
             end
-            local result = condition1 or condition2 or condition3 or condition4 or condition5
-            print("In math: "..tostring(result))
+            local result = condition_inline or condition1 or condition2 or condition3 or condition4 or condition5 or
+            condition6
+            print("In math: " .. tostring(result))
             return result
         end
     end
@@ -351,6 +355,16 @@ return {
             condition = in_math
         },
         t("\\cdot ")
+    ),
+    s(
+        {
+            trig = "vec",
+            name = "vec",
+            priority = 100,
+            snippetType = "autosnippet",
+            condition = in_math
+        },
+        t("\\vec ")
     ),
     s(
         {
