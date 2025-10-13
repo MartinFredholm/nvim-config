@@ -13,6 +13,20 @@ require('obsidian').setup({
             },
         },
     },
+    daily_notes = {
+        -- Optional, if you keep daily notes in a separate directory.
+        folder = "Nodes/Daily-Notes",
+        -- Optional, if you want to change the date format for the ID of daily notes.
+        date_format = "%Y-%m-%d",
+        -- Optional, if you want to change the date format of the default alias of daily notes.
+        alias_format = "Daily note %Y-%m-%d",
+        -- Optional, default tags to add to each new daily note created.
+        default_tags = { "daily-note" },
+        -- Optional, if you want to automatically insert a template from your template directory like 'daily.md'
+        template = nil,
+        -- Optional, if you want `Obsidian yesterday` to return the last work day or `Obsidian tomorrow` to return the next work day.
+        workdays_only = true,
+    },
     completion = {
         nvim_cmp = true,
         blink = false,
@@ -27,6 +41,9 @@ require('obsidian').setup({
     },
     templates = {
         folder = "Templates",
+    },
+    checkbox = {
+        order = { " ", "x", "~", "!", ">" },
     },
     note_id_func = function(title)
         -- Always generate a generic ID with YYMMDD-HHMM + 4 random uppercase letters
