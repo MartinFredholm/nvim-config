@@ -7,7 +7,7 @@ require('obsidian').setup({
     workspaces = {
         {
             name = "Abyss",
-            path = "~/Documents/Obsidian/Abyss",
+            path = vim.fn.expand("~/Documents/Obsidian/Abyss"),
             overrides = {
                 notes_subdir = "Nodes",
             },
@@ -29,7 +29,6 @@ require('obsidian').setup({
     },
     completion = {
         nvim_cmp = true,
-        blink = false,
         min_chars = 2,
     },
     picker = {

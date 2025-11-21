@@ -13,6 +13,8 @@ vim.keymap.set("v", "<C-s>", "<Esc>:update<CR>")
 vim.keymap.set("n", "<leader>bn", ":bnext<CR>")
 vim.keymap.set("n", "<leader>bp", ":bprevious<CR>")
 
+-- Docs navigation
+vim.keymap.set('n', '<leader>9', '<C-]>', { noremap = true, silent = true })
 -- Splitting and Rezising windows
 vim.keymap.set("n", "<leader>sv", ":vsplit<CR>")
 vim.keymap.set("n", "<leader>sh", ":split<CR>")

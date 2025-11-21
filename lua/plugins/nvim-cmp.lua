@@ -33,13 +33,12 @@ cmp.setup({
     mapping = cmp.mapping.preset.insert({
         ["<C-n>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }),
         ["<C-p>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select }),
-        ["<CR>"] = cmp.mapping.confirm({ select = true }),
+        ["<C-y>"] = cmp.mapping.confirm({ select = true }),
         ["<C-Space>"] = cmp.mapping.complete(),
     }),
 
     sources = cmp.config.sources({
         { name = "luasnip" },
-        { name = "obsidian" },
         { name = "nvim_lsp" },
         { name = "buffer" },
         { name = "path" },
@@ -63,4 +62,15 @@ cmp.setup({
     experimental = {
         ghost_text = false, -- inline suggestions
     },
+})
+
+cmp.setup.filetype("markdown", {
+    sources = cmp.config.sources({
+        { name = "obsidian" },
+        { name = "luasnip" },
+        { name = "nvim_lsp" },
+    }, {
+        { name = "buffer" },
+        { name = "path" },
+    })
 })

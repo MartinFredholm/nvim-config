@@ -41,7 +41,7 @@ vim.o.autowrite = false
 -- Behaviour Setting
 vim.o.hidden = true
 vim.o.autochdir = false
-vim.opt.path = vim.opt.path + { ".", "**" }
+--vim.opt.path = vim.opt.path + { ".", "**" }
 vim.o.splitbelow = true
 vim.o.splitright = true
 vim.o.conceallevel = 2
