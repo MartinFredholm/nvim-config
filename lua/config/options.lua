@@ -44,7 +44,6 @@ vim.o.autochdir = false
 --vim.opt.path = vim.opt.path + { ".", "**" }
 vim.o.splitbelow = true
 vim.o.splitright = true
-vim.o.conceallevel = 2
 
 -- Behaviour
 vim.o.spelllang = 'en_us'
@@ -53,6 +52,7 @@ vim.api.nvim_create_autocmd("FileType", {
     pattern = "markdown",
     callback = function()
         vim.opt_local.wrap = true
+        vim.o.conceallevel = 2
         vim.opt_local.linebreak = true
         vim.opt_local.spell = true
     end,

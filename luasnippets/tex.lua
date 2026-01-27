@@ -59,13 +59,113 @@ return {
         fmta(
             [[
                 <>
-                $$
+                \[
                 <>
-                $$
+                \]
             ]],
             { t({ "" }), i(1) })
     ),
 
+    s({
+            trig = "%(",
+            regTrig = true,
+            wordTrig = false,
+            snippetType = "autosnippet",
+            priority = 100,
+        },
+        {
+            t("("),
+            i(1),
+            t(")")
+        }),
+    s({
+            trig = "%{",
+            regTrig = true,
+            wordTrig = false,
+            name = "match_curl",
+            priority = 100,
+            snippetType = "autosnippet",
+        },
+        fmta("{<>}", i(1))
+    ),
+
+    s({
+            trig = "%[",
+            regTrig = true,
+            wordTrig = false,
+            name = "match_bracket",
+            priority = 100,
+            snippetType = "autosnippet",
+            condition = in_math
+        },
+        fmta("[<>]", i(1))
+    ),
+
+    s(
+        {
+            trig = "\\cite",
+            name = "citation",
+            priority = 100,
+            snippetType = "autosnippet",
+        },
+        fmta(
+            [[
+            \cite{<>}
+            ]],
+            { i(0) }
+        )
+    ),
+
+    s(
+        {
+            trig = "\\beg",
+            name = "Begin",
+            priority = 100,
+            snippetType = "autosnippet",
+        },
+        fmta(
+            [[
+                \begin{<>}
+                    <>
+                \end{<>}
+            ]],
+            { i(1), i(0), rep(1) }
+        )
+    ),
+    s(
+        {
+            trig = "\\fig",
+            name = "Figure",
+            priority = 100,
+            snippetType = "autosnippet",
+        },
+        fmta(
+            [[
+                \begin{figure}
+                    \centering{
+                    <>
+                    }
+                    \caption{<>}    
+                    \label{<>}
+                \end{figure}
+            ]],
+            { i(1), i(2), i(3)}
+        )
+    ),
+    s(
+        {
+            trig = "\\incg",
+            name = "include graphics",
+            priority = 100,
+            snippetType = "autosnippet",
+        },
+        fmta(
+            [[
+            \includegraphics[width=<>\textwidth]{<>}
+            ]],
+            { i(1), i(2)}
+        )
+    ),
     --INNSIDE OF MATH MODE--
 
     s(
@@ -325,7 +425,7 @@ return {
             snippetType = "autosnippet",
             condition = in_math
         },
-        fmta("\\tan(<>)", i(1))
+        fmta("\\tan(<>)", i(0))
     ),
     s(
         {
@@ -488,41 +588,5 @@ return {
             condition = in_math
         },
         fmta("^{<>}", i(1))
-    ),
-    s({
-            trig = "%(",
-            regTrig = true,
-            wordTrig = false,
-            snippetType = "autosnippet",
-            priority = 100,
-            condition = in_math
-        },
-        {
-            t("("),
-            i(1),
-            t(")")
-        }),
-    s({
-            trig = "%{",
-            regTrig = true,
-            wordTrig = false,
-            name = "match_curl",
-            priority = 100,
-            snippetType = "autosnippet",
-            condition = in_math
-        },
-        fmta("{<>}", i(1))
-    ),
-
-    s({
-            trig = "%[",
-            regTrig = true,
-            wordTrig = false,
-            name = "match_bracket",
-            priority = 100,
-            snippetType = "autosnippet",
-            condition = in_math
-        },
-        fmta("[<>]", i(1))
     ),
 }

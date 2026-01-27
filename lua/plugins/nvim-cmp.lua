@@ -74,3 +74,14 @@ cmp.setup.filetype("markdown", {
         { name = "path" },
     })
 })
+
+cmp.setup.filetype({"tex,", "latex"}, {
+    sources = cmp.config.sources({
+        { name = "cmp-vimtex" },
+        { name = "luasnip" },
+        { name = "nvim_lsp" },
+    }, {
+        { name = "buffer" },
+        { name = "path" },
+    })
+})

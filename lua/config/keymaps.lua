@@ -41,3 +41,6 @@ vim.keymap.set("n", "<C-k>", "<C-w>k")
 -- Spelling correction
 vim.keymap.set("i", "<C-l>", "<c-g>u<Esc>[s1z=`]a<c-g>u")
 vim.keymap.set("n", "<C-l>", "[s1z=`]")
+vim.keymap.set("v", "<leader>w",
+  "<cmd>lua print('Words: ' .. vim.fn.wordcount().visual_words)<CR>"
+)
