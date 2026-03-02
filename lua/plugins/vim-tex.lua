@@ -5,7 +5,10 @@ vim.pack.add({
 
 if vim.loop.os_uname().sysname == "Windows_NT" then
     vim.g.vimtex_view_general_viewer = "SumatraPDF"
+    elseif vim.loop.os_uname().sysname=="Darwin"  then
+        vim.g.vimtex_view_method = "skim"
 end
+
 vim.g.vimtex_quickfix_open_on_success = 0
 vim.g.vimtex_quickfix_open_on_warning=0
 vim.g.vimtex_quickfix_mode=0

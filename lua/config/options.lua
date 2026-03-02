@@ -44,6 +44,7 @@ vim.o.autochdir = false
 --vim.opt.path = vim.opt.path + { ".", "**" }
 vim.o.splitbelow = true
 vim.o.splitright = true
+vim.opt.foldmethod = "indent"
 
 -- Behaviour
 vim.o.spelllang = 'en_us'
