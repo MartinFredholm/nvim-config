@@ -37,14 +37,15 @@ vim.o.undofile = true
 vim.o.undodir = vim.fn.expand("~/.vim/undodir")
 vim.o.autoread = true
 vim.o.autowrite = false
+vim.o.autochdir = true
 
 -- Behaviour Setting
 vim.o.hidden = true
-vim.o.autochdir = false
---vim.opt.path = vim.opt.path + { ".", "**" }
 vim.o.splitbelow = true
 vim.o.splitright = true
 vim.opt.foldmethod = "indent"
+vim.opt.foldlevel = 99
+vim.opt.foldlevelstart = 99
 
 -- Behaviour
 vim.o.spelllang = 'en_us'

@@ -3,7 +3,7 @@ require('config.autocmds')
 require('config.globals')
 require('config.options')
 require('config.keymaps')
-require('config.colorschemes')
+require('custom').setup()
 
 -- LSP
 require('config.lsp')
