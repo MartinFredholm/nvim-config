@@ -17,6 +17,8 @@ require('plugins.startscreen')
 require('plugins.none-ls')
 require('plugins.vim-tex')
 require('plugins.luasnip')
-require('plugins.markdown-preview')
-require('plugins.obsidian')
+require('plugins.render-markdown')
+require("plugins.zettel").setup({
+    notes_dir = vim.fn.expand("~/Documents/Notes/"),
+})
 require('plugins.nvim-surround')
