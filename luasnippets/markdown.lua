@@ -65,6 +65,10 @@ return {
     --OUTSIDE OF MATH MODE--
 
     s(
+        { trig = "[[", name = "Link Note", priority = 100, snippetType = "autosnippet", condition = not_in_math },
+        fmta("[[<>]]", { i(1) })
+    ),
+    s(
         { trig = "mk", name = "InlineMath", priority = 100, snippetType = "autosnippet", condition = not_in_math },
         fmta("$<>$", { i(1) })
     ),
