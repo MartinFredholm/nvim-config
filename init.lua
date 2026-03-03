@@ -18,7 +18,6 @@ require('plugins.none-ls')
 require('plugins.vim-tex')
 require('plugins.luasnip')
 require('plugins.render-markdown')
---require('plugins.markview')
 require("plugins.zettel").setup({
     notes_dir = vim.fn.expand("~/Documents/Notes/"),
 })
