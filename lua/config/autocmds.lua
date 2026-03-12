@@ -6,6 +6,8 @@ vim.api.nvim_create_autocmd("TextYankPost", {
     end,
 })
 
+-- Changes working directory to current directory if current directory
+-- is not a subdirectory of previous working directory
 vim.api.nvim_create_autocmd("BufEnter", {
     callback = function()
         -- Skip special buffers (terminals, help, etc.)

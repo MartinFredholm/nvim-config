@@ -48,7 +48,7 @@ end
 
 return {
 
-    --OUTSIDE OF MATH MODE--
+--OUTSIDE OF MATH MODE--
 
     s(
         { trig = "mk", name = "InlineMath", priority = 100, snippetType = "autosnippet", condition = not_in_math },
@@ -110,9 +110,9 @@ return {
         },
         fmta(
             [[
-            \cite{<>}
+            (\cite{<>}, p. <>)
             ]],
-            { i(0) }
+            { i(1), i(2) }
         )
     ),
 
@@ -145,11 +145,11 @@ return {
                     \centering{
                     <>
                     }
-                    \caption{<>}    
+                    \caption{<>}
                     \label{<>}
                 \end{figure}
             ]],
-            { i(1), i(2), i(3)}
+            { i(1), i(2), i(3) }
         )
     ),
     s(
@@ -163,10 +163,12 @@ return {
             [[
             \includegraphics[width=<>\textwidth]{<>}
             ]],
-            { i(1), i(2)}
+            { i(1), i(2) }
         )
     ),
-    --INNSIDE OF MATH MODE--
+
+--INSIDE OF MATH MODE--
+
 
     s(
         {
@@ -204,6 +206,21 @@ return {
     ),
     s(
         {
+            trig = "cal",
+            name = "Mathcal",
+            priority = 100,
+            snippetType = "autosnippet",
+            condition = in_math
+        },
+        fmta("\\mathcal{<>}",
+            {
+                i(1)
+            }
+        )
+    ),
+
+    s(
+        {
             trig = "bold",
             name = "Math bold",
             priority = 100,
@@ -211,6 +228,90 @@ return {
             condition = in_math
         },
         fmta("\\mathbf{<>}",
+            {
+                i(1)
+            }
+        )
+    ),
+    s(
+        {
+            trig = "sbold",
+            name = "Math boldsymbol",
+            priority = 100,
+            snippetType = "autosnippet",
+            condition = in_math
+        },
+        fmta("\\boldsymbol{<>}",
+            {
+                i(1)
+            }
+        )
+    ),
+    s(
+        {
+            trig = "skew",
+            name = "Skewsym",
+            priority = 100,
+            snippetType = "autosnippet",
+            condition = in_math
+        },
+        fmta("\\left[ <> \\right]_{\\times}",
+            {
+                i(1)
+            }
+        )
+    ),
+    s(
+        {
+            trig = "clamp",
+            name = "Clamp",
+            priority = 100,
+            snippetType = "autosnippet",
+            condition = in_math
+        },
+        fmta("\\left <> <> \\right <>",
+            {
+                i(1), i(3),i(2)
+            }
+        )
+    ),
+    s(
+        {
+            trig = "frame",
+            name = "adjoint",
+            priority = 100,
+            snippetType = "autosnippet",
+            condition = in_math
+        },
+        fmta("\\mathscr{F}_{<>}",
+            {
+                i(1)
+            }
+        )
+    ),
+    s(
+        {
+            trig = "adjo",
+            name = "adjoint",
+            priority = 100,
+            snippetType = "autosnippet",
+            condition = in_math
+        },
+        fmta("\\text{Ad}_{<>}(<>)",
+            {
+                i(1), i(2)
+            }
+        )
+    ),
+    s(
+        {
+            trig = "madjo",
+            name = "matrix adjoint",
+            priority = 100,
+            snippetType = "autosnippet",
+            condition = in_math
+        },
+        fmta("\\textbf{Ad}_{<>}",
             {
                 i(1)
             }
@@ -313,6 +414,16 @@ return {
             condition = in_math
         },
         t("\\phi")
+    ),
+    s(
+        {
+            trig = "omega",
+            name = "omega",
+            priority = 100,
+            snippetType = "autosnippet",
+            condition = in_math
+        },
+        t("\\omega")
     ),
     s(
         {

@@ -45,6 +45,7 @@ vim.o.autochdir = false
 vim.o.splitbelow = true
 vim.o.splitright = true
 vim.opt.foldmethod = "indent"
+vim.opt.foldlevelstart = 99
 
 -- Behaviour
 vim.o.spelllang = 'en_us'
@@ -54,6 +55,14 @@ vim.api.nvim_create_autocmd("FileType", {
     callback = function()
         vim.opt_local.wrap = true
         vim.o.conceallevel = 2
+        vim.opt_local.linebreak = true
+        vim.opt_local.spell = true
+    end,
+})
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = "tex",
+    callback = function()
+        vim.opt_local.wrap = true
         vim.opt_local.linebreak = true
         vim.opt_local.spell = true
     end,
