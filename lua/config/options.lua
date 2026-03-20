@@ -22,6 +22,7 @@ vim.o.incsearch = true
 
 -- Visual
 vim.o.termguicolors = true
+vim.cmd.colorscheme( 'custom')
 vim.o.signcolumn = "yes"
 vim.o.showmatch = true
 vim.o.winborder = "rounded"

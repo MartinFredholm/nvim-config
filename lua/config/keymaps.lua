@@ -44,3 +44,9 @@ vim.keymap.set("n", "<C-l>", "[s1z=`]")
 vim.keymap.set("v", "<leader>w",
   "<cmd>lua print('Words: ' .. vim.fn.wordcount().visual_words)<CR>"
 )
+
+-- Refresh colorscheme
+vim.keymap.set('n', '<leader>rr', function()
+  package.loaded['custom'] = nil
+  vim.cmd('colorscheme custom')
+end, { desc = 'Reload colorscheme' })
