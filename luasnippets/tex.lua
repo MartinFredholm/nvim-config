@@ -118,6 +118,40 @@ return {
 
     s(
         {
+            trig = "\\eq",
+            name = "Equation",
+            priority = 100,
+            snippetType = "autosnippet",
+        },
+        fmta(
+            [[
+                <>
+                \begin{equation}
+                    <>
+                \end{equation}
+            ]],
+            {t({""}),i(1)}
+        )
+    ),
+    s(
+        {
+            trig = "\\ali",
+            name = "Align",
+            priority = 100,
+            snippetType = "autosnippet",
+        },
+        fmta(
+            [[
+                <>
+                \begin{align}
+                    <>
+                \end{align}
+            ]],
+            {t({""}),i(1)}
+        )
+    ),
+    s(
+        {
             trig = "\\beg",
             name = "Begin",
             priority = 100,
