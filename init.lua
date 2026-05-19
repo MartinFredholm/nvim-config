@@ -11,11 +11,11 @@ require('config.lsp')
 -- Plugins
 require('plugins.nvim-cmp')
 require('plugins.oil')
+require('plugins.vim-tex')
 require('plugins.treesitter')
 require('plugins.fzf')
 require('plugins.startscreen')
 require('plugins.none-ls')
-require('plugins.vim-tex')
 require('plugins.luasnip')
 require('plugins.render-markdown')
 require("plugins.zettel").setup({

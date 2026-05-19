@@ -5,7 +5,7 @@ vim.pack.add({
 
 
 require('nvim-treesitter.configs').setup({
-    ensure_installed = { "c", "lua", "python", "html", "yaml", "vim", "vimdoc", "query", "markdown", "markdown_inline" },
+    ensure_installed = {"latex", "c", "lua", "python", "html", "yaml", "vim", "vimdoc", "query", "markdown", "markdown_inline" },
 
     sync_install = false,
 
@@ -15,6 +15,7 @@ require('nvim-treesitter.configs').setup({
 
     highlight = {
         enable = true,
+--        disable = {"latex"},
 
        -- disable = function(lang, buf)
        --     local max_filesize = 100 * 1024 -- 100 KB
