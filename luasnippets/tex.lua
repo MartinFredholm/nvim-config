@@ -312,7 +312,7 @@ return {
     s(
         {
             trig = "frame",
-            name = "adjoint",
+            name = "frame",
             priority = 100,
             snippetType = "autosnippet",
             condition = in_math
