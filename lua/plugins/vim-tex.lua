@@ -9,8 +9,6 @@ elseif vim.loop.os_uname().sysname == "Darwin" then
     vim.g.vimtex_view_method = "skim"
 end
 
--- 1. FIX THE TYPO: This stops the Treesitter conflict popups
-vim.g.vimtex_syntax_enabled = 0
 
 -- 2. MUTE VIMTEX BACKGROUND WARNINGS & LOG POPUPS
 vim.g.vimtex_log_verbose = 1              -- Suppress log messages in the echo area
@@ -27,9 +25,6 @@ vim.g.vimtex_quickfix_ignore_filters = {
     'Overfull \\hbox',
     'Underfull \\hbox',
 }
-
-vim.cmd("filetype plugin indent on")
-vim.cmd("syntax enable")
 
 vim.g.vimtex_compiler_latexmk = {
     build_dir = '',

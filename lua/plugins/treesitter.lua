@@ -1,42 +1,36 @@
 vim.pack.add({
-    { src = 'https://github.com/nvim-treesitter/nvim-treesitter', version = 'master' },
-    { src = 'https://github.com/nvim-treesitter/nvim-treesitter-textobjects' },
+    { src = 'https://github.com/nvim-treesitter/nvim-treesitter', version = 'main' },
+    { src = 'https://github.com/nvim-treesitter/nvim-treesitter-textobjects', version = 'main' },
 })
 
+-- Parsers beyond the ones bundled with Neovim (lua, markdown, vim, vimdoc, query, c).
+-- LaTeX is left to vimtex. Already-installed parsers are skipped.
+require('nvim-treesitter').install({ 'python', 'yaml', 'bash', 'json', 'matlab', 'latex', 'html' })
 
-require('nvim-treesitter.configs').setup({
-    ensure_installed = {"latex", "c", "lua", "python", "html", "yaml", "vim", "vimdoc", "query", "markdown", "markdown_inline" },
-
-    sync_install = false,
-
-    auto_install = true,
-
-    ignore_install = { "javascript", "latex" },
-
-    highlight = {
-        enable = true,
---        disable = {"latex"},
-
-       -- disable = function(lang, buf)
-       --     local max_filesize = 100 * 1024 -- 100 KB
-       --     local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
-       --     if ok and stats and stats.size > max_filesize then
-       --         return true
-       --     end
-       -- end,
-
-        additional_vim_regex_highlighting = false,
-    },
-    textobjects = {
-        select = {
-            enable = true,
-            lookahead = true,
-            keymaps = {
-                ["af"] = "@function.outer",
-                ["if"] = "@function.inner",
-                ["ac"] = "@class.outer", -- around class
-                ["ic"] = "@class.inner", -- inside class
-            },
-        },
-    },
+-- Treesitter highlighting wherever a parser exists
+vim.api.nvim_create_autocmd('FileType', {
+    callback = function(ev)
+        pcall(vim.treesitter.start, ev.buf)
+    end,
 })
+
+-- Text objects: vaf, vif, vac, vic, daf, ...
+require('nvim-treesitter-textobjects').setup({ select = { lookahead = true } })
+
+local function select(obj)
+    return function()
+        require('nvim-treesitter-textobjects.select').select_textobject(obj, 'textobjects')
+    end
+end
+
+vim.api.nvim_create_autocmd('FileType', {
+    callback = function(ev)
+        if ev.match == 'tex' then return end -- vimtex handles LaTeX
+        pcall(vim.treesitter.start, ev.buf)
+    end,
+})
+
+vim.keymap.set({ 'x', 'o' }, 'af', select('@function.outer'))
+vim.keymap.set({ 'x', 'o' }, 'if', select('@function.inner'))
+vim.keymap.set({ 'x', 'o' }, 'ac', select('@class.outer'))
+vim.keymap.set({ 'x', 'o' }, 'ic', select('@class.inner'))

@@ -1,4 +1,7 @@
+local augroup = vim.api.nvim_create_augroup('user_config', { clear = true })
+
 -- Highlight Yanked Text
+---@diagnostic disable-next-line: param-type-mismatch
 vim.api.nvim_create_autocmd("TextYankPost", {
     group = augroup,
     callback = function()

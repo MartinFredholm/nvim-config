@@ -9,51 +9,32 @@ local rep = require('luasnip.extras').rep
 local r = require("luasnip.extras").restore_node
 local fmta = require('luasnip.extras.fmt').fmta
 
--- Simpler version using treesitter if available
 local function in_math()
-    -- Try treesitter approach for markdown
-    local ok, ts_utils = pcall(require, 'nvim-treesitter.ts_utils')
-    if ok then
-        local node = ts_utils.get_node_at_cursor()
-        if node then
-            -- Check if we're in a math node
-            local node_type = node:type()
-            local parent = node:parent()
-            local parent_type = parent and parent:type() or ""
-            -- print("Parent type: " .. parent_type)
-            -- print("Node type: " .. node_type)
-            local condition1 = node_type == "latex_block" or parent_type == "latex_block"
-            local condition2 = node_type == "inline_formula" or parent_type == "inline_formula"
-            local condition3 = node_type == "displayed_equation" or parent_type == "displayed_equation"
-            local condition4 = node_type == "curly_group"
-            local condition5 = parent_type == "generic_command" or parent_type == "generic_environment"
-            local condition6 = parent_type == "subscript" or parent_type == "superscript" 
-            local condition7 = node_type == "subscript" or node_type == "superscript" 
-            local condition_inline = false
-            if node_type == "inline" then
-                -- Count inline math on current line
-                -- Method 2: Fallback to line-based detection
-                local line = vim.api.nvim_get_current_line()
-                local col = vim.api.nvim_win_get_cursor(0)[2]
-                local before = line:sub(1, col)
-                local after = line:sub(col + 1)
+    local ok, parser = pcall(vim.treesitter.get_parser)
+    if not ok or not parser then return false end
+    parser:parse(true)
 
-                -- Count $ symbols before cursor
-                local count = 0
-                for _ in before:gmatch("%$") do count = count + 1 end
+    local row, col = unpack(vim.api.nvim_win_get_cursor(0))
+    row = row - 1
 
-                condition_inline = count % 2 == 1
-                -- if condition_inline then
-                --     print("Inline math detected")
-                -- end
+    local function latex_at(r, c)
+        local found = false
+        parser:for_each_tree(function(tree, ltree)
+            if found or ltree:lang() ~= 'markdown_inline' then return end
+            local node = tree:root():named_descendant_for_range(r, c, r, c)
+            while node do
+                if node:type() == 'latex_block' then
+                    found = true
+                    return
+                end
+                node = node:parent()
             end
-            local result = condition_inline or condition1 or condition2 or condition3 or condition4 or condition5 or
-            condition6
-            -- print("In math: " .. tostring(result))
-            return result
-        end
+        end)
+        return found
     end
-    return false
+
+    -- In insert mode the cursor sits after the typed text, so check that spot and the char before it
+    return latex_at(row, col) or (col > 0 and latex_at(row, col - 1))
 end
 
 local function not_in_math()

@@ -11,35 +11,7 @@ local fmta = require('luasnip.extras.fmt').fmta
 
 -- Simpler version using treesitter if available
 local function in_math()
-    local ok, ts_utils = pcall(require, "nvim-treesitter.ts_utils")
-    if not ok then return false end
-
-    local node = ts_utils.get_node_at_cursor()
-    if not node then return false end
-
-    -- Walk upward to detect any math-related ancestor
-    while node do
-        local t = node:type()
-
-        if
-            t == "math_environment"
-            or t == "displayed_equation"
-            or t == "inline_formula"
-            or t == "math_environment_name"
-            or t == "math_environment_body"
-        then
-            return true
-        end
-
-        node = node:parent()
-    end
-
-    -- Fallback: inline `$ ... $` detection
-    local line = vim.api.nvim_get_current_line()
-    local col = vim.api.nvim_win_get_cursor(0)[2]
-    local before = line:sub(1, col)
-    local count = select(2, before:gsub("%$", ""))
-    return count % 2 == 1
+    return vim.fn['vimtex#syntax#in_mathzone']() == 1
 end
 
 local function not_in_math()
