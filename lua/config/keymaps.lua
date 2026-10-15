@@ -24,7 +24,7 @@ vim.keymap.set("n", "<C-Left>", ":vertical resize -2<CR>")
 vim.keymap.set("n", "<C-Right>", ":vertical resize +2<CR>")
 
 -- Terminal
-if vim.loop.os_uname().sysname == "Windows_NT" then
+if vim.uv.os_uname().sysname == "Windows_NT" then
     vim.keymap.set("n", "<leader>ft", ":split term://pwsh<CR>i")
 else
     vim.keymap.set("n", "<leader>ft", ":split | term<CR>i")

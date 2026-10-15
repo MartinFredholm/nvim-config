@@ -3,9 +3,9 @@ vim.pack.add({
     { src = "https://github.com/micangl/cmp-vimtex" },
 })
 
-if vim.loop.os_uname().sysname == "Windows_NT" then
+if vim.uv.os_uname().sysname == "Windows_NT" then
     vim.g.vimtex_view_general_viewer = "SumatraPDF"
-elseif vim.loop.os_uname().sysname == "Darwin" then
+elseif vim.uv.os_uname().sysname == "Darwin" then
     vim.g.vimtex_view_method = "skim"
 end
 

@@ -66,10 +66,10 @@ end
 local function get_notes()
     local notes = {}
     local dir = M.config.notes_dir
-    local handle = vim.loop.fs_scandir(dir)
+    local handle = vim.uv.fs_scandir(dir)
     if not handle then return notes end
     while true do
-        local name, type = vim.loop.fs_scandir_next(handle)
+        local name, type = vim.uv.fs_scandir_next(handle)
         if not name then break end
         if type == "file" and name:match("%.md$") then
             table.insert(notes, {
