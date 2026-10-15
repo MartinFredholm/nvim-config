@@ -2,8 +2,16 @@ local M = {}
 
 -- ── Configuration ────────────────────────────────────────────────────────────
 M.config = {
-    notes_dir = vim.fn.expand("~/Documents/Notes/"), -- change this to your notes directory
+    notes_dir = vim.fn.expand("~/Documents/Notes/"),
 }
+vim.api.nvim_create_user_command("ZettelNew", function(opts)
+    local title = opts.args ~= "" and opts.args or nil
+    M.new_note(nil, title)
+end, {
+    nargs = "?",
+})
+
+vim.api.nvim_create_user_command("ZettelDaily", function() M.new_daily() end, {})
 
 -- ── Helpers ──────────────────────────────────────────────────────────────────
 
@@ -24,6 +32,15 @@ local function note_id_func()
     return yy .. mm .. dd .. "-" .. hh .. min .. "-" .. suffix
 end
 
+local function daily_note_name()
+    local date_time = os.date("*t")
+    local yy = string.format("%02d", date_time.year % 100)
+    local mm = string.format("%02d", date_time.month)
+    local dd = string.format("%02d", date_time.day)
+
+    return "daily-" .. yy .. "-" .. mm .. "-" .. dd
+end
+
 -- Returns true if we're inside a math block ($$...$$, $...$, \[...\])
 local function in_math_context()
     local cursor = vim.api.nvim_win_get_cursor(0)
@@ -41,10 +58,6 @@ local function in_math_context()
     local stripped = text_up_to_cursor:gsub("%$%$", "")
     local _, inline_count = stripped:gsub("%$", "")
     if inline_count % 2 == 1 then return true end
-
-    -- \[...\] blocks
-    local in_bracket = stripped:find("%\\%[") and not stripped:find("%\\%]$")
-    if in_bracket then return true end
 
     return false
 end
@@ -221,7 +234,7 @@ function M.follow_link()
                 "Note '" .. target_name .. "' not found. Create it?", "&Yes\n&No", 1)
             if choice == 1 then
                 if not target_id then
-                target_id = note_id_func()
+                    target_id = note_id_func()
                 end
                 local new_inner = target_id .. "|" .. target_name
                 local new_line = line:sub(1, s - 1) .. "[[" .. new_inner .. "]]" .. line:sub(e + 1)
@@ -253,7 +266,6 @@ function M.grep_notes()
     })
 end
 
--- Search by tag (reads frontmatter of every note)
 function M.find_by_tag()
     local fzf = require("fzf-lua")
 
@@ -285,7 +297,7 @@ function M.find_by_tag()
                 end
                 local note_list = {}
                 for _, n in ipairs(notes) do
-                    table.insert(note_list, n.display .. " (" .. n.path..")")
+                    table.insert(note_list, n.display .. " (" .. n.path .. ")")
                 end
                 fzf.fzf_exec(note_list, {
                     prompt = "Note [" .. tag .. "]> ",
@@ -317,6 +329,38 @@ function M.new_note(id, title)
             "id: " .. id,
             "title: " .. title,
             "tags: ",
+            "aliases: ",
+            "---",
+            "",
+            "",
+        })
+        vim.api.nvim_win_set_cursor(0, { 8, 0 })
+    end
+end
+
+-- Daily note
+
+function M.new_daily()
+    local id = note_id_func()
+    local title = daily_note_name()
+    local notes = get_notes()
+    for _, note in ipairs(notes) do
+        if title == note.display then
+            vim.cmd("edit " .. vim.fn.fnameescape(note.path))
+            return
+        end
+    end
+    local filename = title:gsub("%s+", "-"):lower() .. ".md"
+    local path = M.config.notes_dir .. filename
+    vim.cmd("edit " .. vim.fn.fnameescape(path))
+    -- Insert starter frontmatter if the file is new
+    if vim.fn.filereadable(path) == 0 then
+        vim.api.nvim_buf_set_lines(0, 0, 0, false, {
+            "---",
+            "id: " .. id,
+            "title: " .. title,
+            "tags:",
+            "    - daily",
             "aliases: ",
             "---",
             "",

@@ -18,6 +18,7 @@ require('plugins.startscreen')
 require('plugins.none-ls')
 require('plugins.luasnip')
 require('plugins.render-markdown')
+require('plugins.markdown-preview')
 require("plugins.zettel").setup({
     notes_dir = vim.fn.expand("~/Documents/Notes/"),
 })
