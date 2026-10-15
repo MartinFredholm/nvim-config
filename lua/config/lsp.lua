@@ -2,7 +2,6 @@
 vim.lsp.enable({
     'lua_ls',
     'pyright',
-    'yamlls',
 })
 
 -- Diagnostics

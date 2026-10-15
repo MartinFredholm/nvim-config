@@ -1,0 +1,100 @@
+{
+  "plugins": {
+    "LuaSnip": {
+      "rev": "0abc8f390b278c3b4aabc4c004ac8a088b65cf24",
+      "src": "https://github.com/L3MON4D3/LuaSnip"
+    },
+    "cmp-buffer": {
+      "rev": "b74fab3656eea9de20a9b8116afa3cfc4ec09657",
+      "src": "https://github.com/hrsh7th/cmp-buffer"
+    },
+    "cmp-cmdline": {
+      "rev": "d126061b624e0af6c3a556428712dd4d4194ec6d",
+      "src": "https://github.com/hrsh7th/cmp-cmdline"
+    },
+    "cmp-nvim-lsp": {
+      "rev": "bd5a7d6db125d4654b50eeae9f5217f24bb22fd3",
+      "src": "https://github.com/hrsh7th/cmp-nvim-lsp"
+    },
+    "cmp-path": {
+      "rev": "c642487086dbd9a93160e1679a1327be111cbc25",
+      "src": "https://github.com/hrsh7th/cmp-path"
+    },
+    "cmp-under-comparator": {
+      "rev": "6857f10272c3cfe930cece2afa2406e1385bfef8",
+      "src": "https://github.com/lukas-reineke/cmp-under-comparator"
+    },
+    "cmp-vimtex": {
+      "rev": "5283bf9108ef33d41e704027b9ef22437ce7a15b",
+      "src": "https://github.com/micangl/cmp-vimtex"
+    },
+    "cmp_luasnip": {
+      "rev": "98d9cb5c2c38532bd9bdb481067b20fea8f32e90",
+      "src": "https://github.com/saadparwaiz1/cmp_luasnip"
+    },
+    "dashboard-nvim": {
+      "rev": "c42fcfbd96dfcaa486c0a0ab52494316f1c31350",
+      "src": "https://github.com/nvimdev/dashboard-nvim"
+    },
+    "fzf-lua": {
+      "rev": "5d2ba91230356dce4dac52df32ddc6cf5a940d56",
+      "src": "https://github.com/ibhagwan/fzf-lua"
+    },
+    "lspkind.nvim": {
+      "rev": "3ddd1b4edefa425fda5a9f95a4f25578727c0bb3",
+      "src": "https://github.com/onsails/lspkind.nvim"
+    },
+    "luasnip-latex-snippets.nvim": {
+      "rev": "498f4ba12d025487939d89b801647b44bb15676c",
+      "src": "https://github.com/iurimateus/luasnip-latex-snippets.nvim"
+    },
+    "markdown-preview": {
+      "rev": "a923f5fc5ba36a3b17e289dc35dc17f66d0548ee",
+      "src": "https://github.com/iamcco/markdown-preview.nvim"
+    },
+    "mini.icons": {
+      "rev": "b8f6fa6f5a3fd0c56936252edcd691184e5aac0c",
+      "src": "https://github.com/echasnovski/mini.icons"
+    },
+    "none-ls-extras.nvim": {
+      "rev": "974bf1cd73fa3f0291211212ad60f8fe6fdd68d7",
+      "src": "https://github.com/nvimtools/none-ls-extras.nvim"
+    },
+    "none-ls.nvim": {
+      "rev": "78111a97cebed3dfda8157af8141bf1915cfc327",
+      "src": "https://github.com/nvimtools/none-ls.nvim"
+    },
+    "nvim-cmp": {
+      "rev": "b5311ab3ed9c846b585c0c15b7559be131ec4be9",
+      "src": "https://github.com/hrsh7th/nvim-cmp"
+    },
+    "nvim-surround": {
+      "rev": "75de1782c781961e392efcca57601bf436f4d550",
+      "src": "https://github.com/kylechui/nvim-surround"
+    },
+    "nvim-treesitter": {
+      "rev": "42fc28ba918343ebfd5565147a42a26580579482",
+      "src": "https://github.com/nvim-treesitter/nvim-treesitter"
+    },
+    "nvim-treesitter-textobjects": {
+      "rev": "a0e182ae21fda68c59d1f36c9ed45600aef50311",
+      "src": "https://github.com/nvim-treesitter/nvim-treesitter-textobjects"
+    },
+    "oil.nvim": {
+      "rev": "07f80ad645895af849a597d1cac897059d89b686",
+      "src": "https://github.com/stevearc/oil.nvim"
+    },
+    "plenary.nvim": {
+      "rev": "b9fd5226c2f76c951fc8ed5923d85e4de065e509",
+      "src": "https://github.com/nvim-lua/plenary.nvim"
+    },
+    "render-markdown.nvim": {
+      "rev": "c7188a8f9d2953696b6303caccbf39c51fa2c1b1",
+      "src": "https://github.com/MeanderingProgrammer/render-markdown.nvim"
+    },
+    "vimtex": {
+      "rev": "2e1bbabeb2c34bb17d7bc8cfdf8f95b16dd0db0c",
+      "src": "https://github.com/lervag/vimtex"
+    }
+  }
+}
