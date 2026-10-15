@@ -10,6 +10,7 @@ require('config.lsp')
 
 -- Plugins
 require('plugins.nvim-cmp')
+require('plugins.mini-icons')
 require('plugins.oil')
 require('plugins.vim-tex')
 require('plugins.treesitter')

@@ -43,3 +43,17 @@ vim.g.vimtex_compiler_latexmk = {
     },
     quickfix = 0,
 }
+
+
+local cmp = require('cmp')
+
+cmp.setup.filetype('tex', {
+    sources = cmp.config.sources({
+        { name = 'vimtex' },
+        { name = 'luasnip' },
+        { name = 'nvim_lsp' },
+    }, {
+        { name = 'buffer' },
+        { name = 'path' },
+    }),
+})

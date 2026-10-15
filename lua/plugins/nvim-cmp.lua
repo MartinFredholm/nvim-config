@@ -3,14 +3,11 @@ vim.pack.add({
     { src = "https://github.com/hrsh7th/cmp-nvim-lsp" },               -- LSP completions
     { src = "https://github.com/hrsh7th/cmp-buffer" },                 -- buffer words
     { src = "https://github.com/hrsh7th/cmp-path" },                   -- filesystem paths
-    { src = "https://github.com/hrsh7th/cmp-cmdline" },                -- command-line completion
-    { src = "https://github.com/onsails/lspkind.nvim" },               -- pretty icons
     { src = "https://github.com/lukas-reineke/cmp-under-comparator" }, -- better sorting
     { src = "https://github.com/saadparwaiz1/cmp_luasnip" },           -- for luasnip completion
 })
 
 local cmp = require("cmp")
-local lspkind = require("lspkind")
 
 cmp.setup({
     snippet = {
@@ -22,13 +19,6 @@ cmp.setup({
     window = {
         completion = cmp.config.window.bordered(),
         documentation = cmp.config.window.bordered(),
-    },
-    formatting = {
-        format = lspkind.cmp_format({
-            mode = "symbol_text", -- show symbol + text
-            maxwidth = 50,
-            ellipsis_char = "…",
-        }),
     },
     mapping = cmp.mapping.preset.insert({
         ["<C-n>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }),
@@ -62,22 +52,18 @@ cmp.setup({
     experimental = {
         ghost_text = false, -- inline suggestions
     },
+
+    formatting = {
+        format = function(_, item)
+            local icon = require('mini.icons').get('lsp', item.kind)
+            item.kind = icon .. ' ' .. item.kind
+            return item
+        end,
+    },
 })
 
 cmp.setup.filetype("markdown", {
     sources = cmp.config.sources({
-        { name = "obsidian" },
-        { name = "luasnip" },
-        { name = "nvim_lsp" },
-    }, {
-        { name = "buffer" },
-        { name = "path" },
-    })
-})
-
-cmp.setup.filetype({"tex,", "latex"}, {
-    sources = cmp.config.sources({
-        { name = "cmp-vimtex" },
         { name = "luasnip" },
         { name = "nvim_lsp" },
     }, {

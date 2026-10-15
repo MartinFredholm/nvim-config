@@ -14,8 +14,14 @@ return {
     },
     settings = {
         Lua = {
-            diagnostics = {
-                globals = { 'vim' },
+            runtime = {
+                version = 'LuaJIT',
+                path = { 'lua/?.lua', 'lua/?/init.lua' },
+                pathStrict = true,
+            },
+            workspace = {
+                checkThirdParty = false,
+                library = { vim.env.VIMRUNTIME },
             },
         },
     },

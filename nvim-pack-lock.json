@@ -8,12 +8,8 @@
       "rev": "b74fab3656eea9de20a9b8116afa3cfc4ec09657",
       "src": "https://github.com/hrsh7th/cmp-buffer"
     },
-    "cmp-cmdline": {
-      "rev": "d126061b624e0af6c3a556428712dd4d4194ec6d",
-      "src": "https://github.com/hrsh7th/cmp-cmdline"
-    },
     "cmp-nvim-lsp": {
-      "rev": "bd5a7d6db125d4654b50eeae9f5217f24bb22fd3",
+      "rev": "cbc7b02bb99fae35cb42f514762b89b5126651ef",
       "src": "https://github.com/hrsh7th/cmp-nvim-lsp"
     },
     "cmp-path": {
@@ -25,7 +21,7 @@
       "src": "https://github.com/lukas-reineke/cmp-under-comparator"
     },
     "cmp-vimtex": {
-      "rev": "5283bf9108ef33d41e704027b9ef22437ce7a15b",
+      "rev": "c09ca05bfa0641754516f13294d73d3799a02fc8",
       "src": "https://github.com/micangl/cmp-vimtex"
     },
     "cmp_luasnip": {
@@ -40,10 +36,6 @@
       "rev": "5d2ba91230356dce4dac52df32ddc6cf5a940d56",
       "src": "https://github.com/ibhagwan/fzf-lua"
     },
-    "lspkind.nvim": {
-      "rev": "3ddd1b4edefa425fda5a9f95a4f25578727c0bb3",
-      "src": "https://github.com/onsails/lspkind.nvim"
-    },
     "luasnip-latex-snippets.nvim": {
       "rev": "498f4ba12d025487939d89b801647b44bb15676c",
       "src": "https://github.com/iurimateus/luasnip-latex-snippets.nvim"
@@ -57,7 +49,7 @@
       "src": "https://github.com/echasnovski/mini.icons"
     },
     "nvim-cmp": {
-      "rev": "b5311ab3ed9c846b585c0c15b7559be131ec4be9",
+      "rev": "2ffe79f1f021def8dd1fcd81deb16f1bb0d989f3",
       "src": "https://github.com/hrsh7th/nvim-cmp"
     },
     "nvim-surround": {
