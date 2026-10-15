@@ -20,8 +20,8 @@ local function in_math()
             local node_type = node:type()
             local parent = node:parent()
             local parent_type = parent and parent:type() or ""
-            print("Parent type: " .. parent_type)
-            print("Node type: " .. node_type)
+            -- print("Parent type: " .. parent_type)
+            -- print("Node type: " .. node_type)
             local condition1 = node_type == "latex_block" or parent_type == "latex_block"
             local condition2 = node_type == "inline_formula" or parent_type == "inline_formula"
             local condition3 = node_type == "displayed_equation" or parent_type == "displayed_equation"
@@ -43,13 +43,13 @@ local function in_math()
                 for _ in before:gmatch("%$") do count = count + 1 end
 
                 condition_inline = count % 2 == 1
-                if condition_inline then
-                    print("Inline math detected")
-                end
+                -- if condition_inline then
+                --     print("Inline math detected")
+                -- end
             end
             local result = condition_inline or condition1 or condition2 or condition3 or condition4 or condition5 or
             condition6
-            print("In math: " .. tostring(result))
+            -- print("In math: " .. tostring(result))
             return result
         end
     end
