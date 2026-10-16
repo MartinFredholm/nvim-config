@@ -33,6 +33,8 @@ vim.keymap.set({ 'n', 'i' }, '<C-l>', function()
 end, { desc = 'Fix last spelling error' })
 
 vim.api.nvim_create_user_command('Msg', function()
-    vim.cmd("new | put =execute('messages')")
+    local lines = vim.split(vim.fn.execute('messages'), '\n', { trimempty = true })
+    vim.cmd('new')
     vim.bo.buftype = 'nofile'
+    vim.api.nvim_buf_set_lines(0, 0, -1, false, lines)
 end, { desc = 'Messages in a scratch buffer' })
