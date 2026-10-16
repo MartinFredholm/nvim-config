@@ -37,7 +37,7 @@ vim.api.nvim_create_autocmd("VimEnter", {
                     [[                                                           ]],
                     [[]],
                     [[]],
-                }, --your header
+                },
                 header_hl = "DashboardHeader",
                 center = {
                     {
