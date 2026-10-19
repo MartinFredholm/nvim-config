@@ -1,7 +1,7 @@
 
 vim.o.number = true
 vim.o.relativenumber = true
-vim.o.cursorline = true
+vim.o.cursorline = false
 vim.o.wrap = false
 vim.o.scrolloff = 10
 vim.o.sidescrolloff = 10
@@ -54,7 +54,6 @@ vim.api.nvim_create_autocmd("FileType", {
     pattern = "markdown",
     callback = function()
         vim.opt_local.wrap = true
-        vim.opt_local.conceallevel = 2
         vim.opt_local.linebreak = true
         vim.opt_local.spell = true
     end,

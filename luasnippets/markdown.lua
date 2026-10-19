@@ -47,10 +47,11 @@ local snippets = {
     -- Links and entering math
     auto('mk', fmta('$<>$', { i(1) }), { condition = not_in_math }),
     auto('dm', fmta([[
+
         $$
         <>
         $$
-    ]], { i(1) }), { condition = not_in_math }),
+    ]], { i(1) }, {trim_empty=false}), { condition = not_in_math }),
 
     -- Auto-closing brackets, inside math only
     auto('(', { t('('), i(1), t(')') }, { wordTrig = false, condition = in_math }),

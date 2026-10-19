@@ -1,23 +1,14 @@
--- Theme
-vim.cmd.colorscheme("unokai")
--- Make backgrounds transparant
-vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
-vim.api.nvim_set_hl(0, "NormalNC", { bg = "none" })
-vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
-vim.api.nvim_set_hl(0, "FloatBorder", { bg = "none" })
-vim.api.nvim_set_hl(0, "EndOfBuffer", { bg = "none" })
-vim.api.nvim_set_hl(0, "Pmenu", { bg = "none" })
-vim.api.nvim_set_hl(0, "PmenuKind", { bg = "none" })
--- Apply custom color to dashboard
-local dashboard_color = "#e40b0b"
-local dashboard_color_secondary = "#f5c542"
-vim.api.nvim_set_hl(0, "DashboardHeader", { fg = dashboard_color })
-vim.api.nvim_set_hl(0, "DashboardIcon", { fg = dashboard_color_secondary })
-vim.api.nvim_set_hl(0, "DashboardDesc", { fg = dashboard_color_secondary })
-vim.api.nvim_set_hl(0, "DashboardKey", { fg = dashboard_color_secondary })
-vim.api.nvim_set_hl(0, "DashboardFooter", { fg = dashboard_color_secondary })
--- Custom spell highlights (overrides unokai defaults)
-vim.api.nvim_set_hl(0, "SpellBad", { underline = true })
-vim.api.nvim_set_hl(0, "SpellCap", { underline = true })
-vim.api.nvim_set_hl(0, "SpellLocal", { underline = true })
-vim.api.nvim_set_hl(0, "SpellRare", { underline = true })
+local profile = (vim.env.ITERM_PROFILE or ''):lower()
+local light = profile:find('light') ~= nil
+local popp = profile:find('popp') ~= nil
+
+if light then
+    vim.o.background = 'light'
+    vim.cmd.colorscheme('custom-light')
+elseif popp then
+    vim.o.background = 'light'
+    vim.cmd.colorscheme('custom-popp')
+else
+    vim.o.background = 'dark'
+    vim.cmd.colorscheme('custom-dark')
+end
