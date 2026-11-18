@@ -11,6 +11,7 @@ vim.keymap.set({ 'n', 'x', 'o' }, 'æ', ']', { remap = true })
 
 vim.keymap.set({ 'n', 'x', 'o' }, '<C-ø>', '<C-[>', { remap = true })
 vim.keymap.set({ 'n', 'x', 'o' }, '<C-æ>', '<C-]>', { remap = true })
+
 -- Terminal
 if vim.uv.os_uname().sysname == "Windows_NT" then
     vim.keymap.set("n", "<leader>ft", "<cmd>split term://pwsh<CR>i")
@@ -18,7 +19,11 @@ else
     vim.keymap.set("n", "<leader>ft", "<cmd>split | term<CR>i")
 end
 
-vim.keymap.set("t", "<Esc>", [[<C-\><C-n>]]) -- Escapes terminal insert mode with ESC
+vim.keymap.set("t", "<Esc>", [[<C-\><C-n>]], {desc = "Exit terminal mode"}) -- Escapes terminal insert mode with ESC
+vim.keymap.set("t", "<C-w>h", [[<C-\><C-n><C-w>h]], { desc = "Move to left split" })
+vim.keymap.set("t", "<C-w>j", [[<C-\><C-n><C-w>j]], { desc = "Move to lower split" })
+vim.keymap.set("t", "<C-w>k", [[<C-\><C-n><C-w>k]], { desc = "Move to upper split" })
+vim.keymap.set("t", "<C-w>l", [[<C-\><C-n><C-w>l]], { desc = "Move to right split" })
 
 -- Spelling correction
 vim.keymap.set({ 'n', 'i' }, '<C-l>', function()
