@@ -9,6 +9,8 @@ vim.keymap.set("n", "<leader>con", function() require('oil').open(vim.fn.stdpath
 vim.keymap.set({ 'n', 'x', 'o' }, 'ø', '[', { remap = true })
 vim.keymap.set({ 'n', 'x', 'o' }, 'æ', ']', { remap = true })
 
+vim.keymap.set({ 'n', 'x', 'o' }, '<C-ø>', '<C-[>', { remap = true })
+vim.keymap.set({ 'n', 'x', 'o' }, '<C-æ>', '<C-]>', { remap = true })
 -- Terminal
 if vim.uv.os_uname().sysname == "Windows_NT" then
     vim.keymap.set("n", "<leader>ft", "<cmd>split term://pwsh<CR>i")

@@ -9,6 +9,10 @@ vim.api.nvim_create_autocmd("TextYankPost", {
     end,
 })
 
+vim.o.autoread = true
+vim.api.nvim_create_autocmd({ "VimResume", "FocusGained", "BufEnter", "CursorHold" }, {
+    command = "checktime",
+})
 
 -- Changes working directory to current directory if current directory
 -- is not a subdirectory of previous working directory

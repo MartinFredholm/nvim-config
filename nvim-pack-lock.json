@@ -32,6 +32,10 @@
       "rev": "c42fcfbd96dfcaa486c0a0ab52494316f1c31350",
       "src": "https://github.com/nvimdev/dashboard-nvim"
     },
+    "diffview.nvim": {
+      "rev": "4516612fe98ff56ae0415a259ff6361a89419b0a",
+      "src": "https://github.com/sindrets/diffview.nvim"
+    },
     "fzf-lua": {
       "rev": "5d2ba91230356dce4dac52df32ddc6cf5a940d56",
       "src": "https://github.com/ibhagwan/fzf-lua"
