@@ -1,6 +1,5 @@
 -- -- Keymaps
 -- Basics
-vim.keymap.set("i", "jj", "<Esc>")
 vim.keymap.set("n", "<leader>q", "<cmd>bd<CR>")
 vim.keymap.set("n", "<leader>lf", vim.lsp.buf.format)
 vim.keymap.set("n", "<leader>con", function() require('oil').open(vim.fn.stdpath("config")) end)
